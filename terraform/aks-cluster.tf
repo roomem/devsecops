@@ -13,13 +13,6 @@ resource "azurerm_resource_group" "default" {
   }
 }
 
-identity {
-  type = "UserAssigned"
-  identity_ids = [
-    "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourcegroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
-  ]
-}
-
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "${random_pet.prefix.id}-aks"
   location            = azurerm_resource_group.default.location
@@ -32,6 +25,13 @@ resource "azurerm_kubernetes_cluster" "default" {
     node_count      = 2
     vm_size         = "Standard_D2_v2"
     os_disk_size_gb = 30
+  }
+
+  identity {
+  type = "UserAssigned"
+  identity_ids = [
+    "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourcegroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
+  ]
   }
 
 /*  service_principal {
