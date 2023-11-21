@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Terraform Init') {
             steps {
-                dir(terraform){
+                dir('terraform'){
                     sh "pwd"
                     sh "terraform init"
                 }
@@ -18,14 +18,14 @@ pipeline {
         }
         stage('Validazione configurazione') {
             steps {
-                 dir(terraform){
+                 dir('terraform'){
                     sh "terraform validate"
                 }
             }
         }
         stage('Piano esecuzione Terraform') {
             steps {
-                dir(terraform){
+                dir('terraform'){
                     sh "terraform plan"
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Creazione Infrastruttura') {
             steps {
-                dir(terraform){
+                dir('terraform'){
                     sh "terraform apply -auto-approve"
                 }
             }
@@ -58,7 +58,7 @@ pipeline {
         
         stage('Piano distruzione Terraform') {
             steps {
-                dir(terraform){
+                dir('terraform'){
                     sh "terraform plan -destroy"
                 }
             }
@@ -70,7 +70,7 @@ pipeline {
         }
         stage('Destroy Infrastruttura') {
             steps {
-                dir(terraform){
+                dir('terraform'){
                     sh "terraform destroy -auto-approve"
                 }
             }
