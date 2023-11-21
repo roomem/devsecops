@@ -51,7 +51,8 @@ pipeline {
             steps {
                 sh "kubectl cluster-info"
             }
-        }*/
+        }
+        */
         
         stage('Piano distruzione Terraform') {
             steps {
