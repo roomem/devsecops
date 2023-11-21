@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AZURE_DEFAULT_REGION = "westeurope"
-        PATH = "/usr/local/bin/terraform"
+        //PATH = "/usr/local/bin/terraform"
         
     }
 
