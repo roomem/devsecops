@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AZURE_DEFAULT_REGION = "westeurope"
-        PATH = "/usr/local/bin/"
+        //PATH = "/usr/local/bin/"
         
     }
 
@@ -11,6 +11,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir(terraform){
+                    sh "pwd"
                     sh "terraform init"
                 }
             }
