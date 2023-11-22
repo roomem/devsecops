@@ -8,10 +8,6 @@ provider "azurerm" {
 resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "westeurope"
-
-  tags = {
-    environment = "Demo"
-  }
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
