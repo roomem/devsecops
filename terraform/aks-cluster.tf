@@ -5,26 +5,12 @@ provider "azurerm" {
   features {}
 }
 
-/*resource "azurerm_resource_group" "default" {
+resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "westeurope"
 
   tags = {
     environment = "Demo"
-  }
-}*/
-
-resource "azurerm_resource_group" "default" {
-  existing = azurerm_resource_group.existing(
-"BU-MT"
-)
-  name     = "BU-MT"
-  location = "westeurope"
-  tags     = {
-    "environment" = "Demo"
-  }
-  if not existing {
-    create {}
   }
 }
 
