@@ -3,8 +3,11 @@ pipeline {
 
     environment {
         AZURE_DEFAULT_REGION = "westeurope"
+        ARM_SUBSCRIPTION_ID = credentials('AZURE/ARM_SUBSCRIPTION_ID')
+        ARM_TENANT_ID = credentials('AZURE/ARM_TENANT_ID')
+        ARM_CLIENT_ID = credentials('AZURE/ARM_CLIENT_ID')
+        ARM_CLIENT_SECRET = credentials('AZURE/ARM_CLIENT_SECRET')
         //PATH = "/usr/local/bin/terraform"
-        
     }
 
     stages {
@@ -27,7 +30,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     //sh "terraform plan -var-file='terraform.tfvars'"
-                    sh "terraform plan"
+                    sh "terraform plan -var='appId=ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
             }
         }
