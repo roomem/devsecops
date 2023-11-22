@@ -15,7 +15,9 @@ provider "azurerm" {
 }*/
 
 resource "azurerm_resource_group" "default" {
-  existing = azurerm_resource_group.existing("BU-MT")
+  existing = azurerm_resource_group.existing(
+"BU-MT"
+)
   name     = "BU-MT"
   location = "westeurope"
   tags     = {
