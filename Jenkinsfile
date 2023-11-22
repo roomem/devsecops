@@ -42,7 +42,7 @@ pipeline {
         stage('Creazione Infrastruttura') {
             steps {
                 dir('terraform'){
-                    sh "terraform apply -auto-approve"
+                    sh "terraform apply -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET' -auto-approve"
                 }
             }
         }
