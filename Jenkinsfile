@@ -27,7 +27,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     //sh "terraform plan -var-file='terraform.tfvars'"
-                    sh "terraform plan -var=appId=2685d5c7-d3dc-4393-bc3c-2fc56fc19067 -var=password=Rwq8Q~dvNS6Ve5IDJfTc44z0Y0QbPl0L3W~tDdjn"
+                    sh "terraform plan 
                 }
             }
         }
