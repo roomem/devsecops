@@ -4,7 +4,7 @@ pipeline {
     environment {
         AZURE_DEFAULT_REGION = "westeurope"
         ARM_SUBSCRIPTION_ID = credentials('System/AZURE/ARM_SUBSCRIPTION_ID')
-        ARM_TENANT_ID = credentials('System/AZURE/ARM_TENANT_ID')
+        ARM_TENANT_ID = credentials('ARM_TENANT_ID')
         ARM_CLIENT_ID = credentials('System/AZURE/ARM_CLIENT_ID')
         ARM_CLIENT_SECRET = credentials('System/AZURE/ARM_CLIENT_SECRET')
         //PATH = "/usr/local/bin/terraform"
