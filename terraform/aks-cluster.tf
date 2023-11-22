@@ -5,12 +5,29 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "default" {
+/*resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "westeurope"
 
   tags = {
     environment = "Demo"
+  }
+}*/
+
+resource "azurerm_resource_group" "default" {
+  # Check if the resource group already exists
+  existing = azurerm_resource_group.existing("BU-MT")
+
+  # Create the resource group if it doesn't exist
+  name     = "BU-MT"
+  location = "westeurope"
+  tags     = {
+    "environment" = "Demo"
+  }
+
+  # Skip creating the resource group if it already exists
+  if not existing {
+    create {}
   }
 }
 
