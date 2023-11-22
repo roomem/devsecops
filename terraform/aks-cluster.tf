@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   identity {
   type = "UserAssigned"
   identity_ids = [
-    "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourcegroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
+    "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
   ]
   }
 
