@@ -5,7 +5,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "BU-MT" {
+/*resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "westeurope"
 
@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "BU-MT" {
     environment = "Demo"
   }
 }
-
+*/
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "${random_pet.prefix.id}-aks"
   location            = azurerm_resource_group.default.location
