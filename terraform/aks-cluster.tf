@@ -1,7 +1,7 @@
 resource "random_pet" "prefix" {}
 
 provider "azurerm" {
-  skip_provider_registration = true
+  //skip_provider_registration = true
   features {}
 }
 
@@ -26,9 +26,9 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   identity {
   type = "UserAssigned"
-  identity_ids = [
-    "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
-  ]
+    identity_ids = [
+      "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
+    ]
   }
 
 /*  service_principal {
@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "default" {
     client_secret = var.password
   }
 */
-  role_based_access_control_enabled = true
+  //role_based_access_control_enabled = true
 
   tags = {
     environment = "Demo"
