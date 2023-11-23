@@ -30,7 +30,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     //sh "terraform plan -var-file='terraform.tfvars'"
-                    sh "terraform plan -var='appId=ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
+                    sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
             }
         }
