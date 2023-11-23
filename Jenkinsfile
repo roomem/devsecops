@@ -29,8 +29,10 @@ pipeline {
         stage('Piano esecuzione Terraform') {
             steps {
                 dir('terraform'){
-                    //sh "terraform plan -var-file='terraform.tfvars'"
-                    sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
+                    withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                        sh "terraform plan"
+                    }
+                   // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
             }
         }
@@ -42,7 +44,10 @@ pipeline {
         stage('Creazione Infrastruttura') {
             steps {
                 dir('terraform'){
-                    sh "terraform apply -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET' -auto-approve"
+                    withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                        sh "terraform apply -auto-approve"
+                    }
+                    //sh "terraform apply -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET' -auto-approve"
                 }
             }
         }
