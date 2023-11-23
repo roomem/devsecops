@@ -30,6 +30,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                        sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                         sh "terraform plan"
                     }
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
