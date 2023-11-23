@@ -14,7 +14,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir('terraform'){
-                    sh "pwd"
+                    sh "az login --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET"
                     sh "terraform init"
                 }
             }
@@ -29,10 +29,10 @@ pipeline {
         stage('Piano esecuzione Terraform') {
             steps {
                 dir('terraform'){
-                    withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                    //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
                         //sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                         sh "terraform plan -var='appId=$AZURE_CLIENT_ID' -var='password=$AZURE_CLIENT_SECRET'"
-                    }
+                    //}
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
             }
@@ -45,9 +45,9 @@ pipeline {
         stage('Creazione Infrastruttura') {
             steps {
                 dir('terraform'){
-                    withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                    //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
                         sh "terraform apply -var='appId=$AZURE_CLIENT_ID' -var='password=$AZURE_CLIENT_SECRET' -auto-approve"
-                    }
+                    //}
                     //sh "terraform apply -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET' -auto-approve"
                 }
             }
