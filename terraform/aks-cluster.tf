@@ -6,7 +6,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "default" {
-  id = "f89882ab-4505-45fb-b088-f9c3f90f834e"
   name     = "BU-MT"
   location = "westeurope"
 }
