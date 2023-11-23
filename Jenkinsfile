@@ -8,13 +8,26 @@ pipeline {
         ARM_CLIENT_ID = credentials('ARM_CLIENT_ID')
         ARM_CLIENT_SECRET = credentials('ARM_CLIENT_SECRET')
         //PATH = "/usr/local/bin/terraform"
+
+        AZURE_CREDENTIALS = credentials('certimetergroup_creds')
+        AZURE_USERNAME = sh(script: "echo '\${AZURE_CREDENTIALS_USR}'", returnStdout: true).trim()
+        AZURE_PASSWORD = sh(script: "echo '\${AZURE_CREDENTIALS_PSW}'", returnStdout: true).trim()
+
     }
 
     stages {
+        stage('Azure Login') {
+            steps {
+                script {
+                    sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
+                }
+            }
+        }
+
         stage('Terraform Init') {
             steps {
                 dir('terraform'){
-                    sh "az login --username ${ARM_CLIENT_ID} --password ${ARM_CLIENT_SECRET} --tenant ${ARM_TENANT_ID}"
+                    //sh "az login --username $ --password ${ARM_CLIENT_SECRET} --tenant ${ARM_TENANT_ID}"
                     sh "terraform init"
                 }
             }
