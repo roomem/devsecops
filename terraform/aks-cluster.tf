@@ -1,13 +1,13 @@
 resource "random_pet" "prefix" {}
 
 provider "azurerm" {
-  //skip_provider_registration = true
+  skip_provider_registration = true
   features {}
 }
 
 resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
-  location = "westeurope"
+  location = "West Europe"
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "default" {
     client_secret = var.password
   }
 */
-  //role_based_access_control_enabled = true
+  role_based_access_control_enabled = true
 
   tags = {
     environment = "Demo"
