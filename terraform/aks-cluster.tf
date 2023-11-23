@@ -5,15 +5,18 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "default" {
+/*resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "West Europe"
 }
+*/
 
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "${random_pet.prefix.id}-aks"
-  location            = azurerm_resource_group.default.location
-  resource_group_name = azurerm_resource_group.default.name
+  //location            = azurerm_resource_group.default.location
+  //resource_group_name = azurerm_resource_group.default.name
+  location            = "West Europe"
+  resource_group_name = "BU-MT"
   dns_prefix          = "${random_pet.prefix.id}-k8s"
   kubernetes_version  = "1.26.3"
 
