@@ -26,12 +26,12 @@ pipeline {
 
         stage('Terraform Import') {
             steps {
-                withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
 
-                -var='appId=${ARM_CLIENT_ID}' -var='password=${ARM_CLIENT_SECRET}'
-                }
+                
+                //}
                 dir('terraform'){
-                    sh "terraform import 'azurerm_resource_group.BU-MT' '/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT'" 
+                    sh "terraform import -var 'appId=${ARM_CLIENT_ID}' -var 'password=${ARM_CLIENT_SECRET}' 'azurerm_resource_group.BU-MT' '/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT'" 
 
                 }
             }
