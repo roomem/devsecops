@@ -59,10 +59,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
-                        //sh "terraform apply -var='appId=${ARM_CLIENT_ID}' -var='password=${ARM_CLIENT_SECRET}' -auto-approve"
-                        sh "az login --identity"
-                        sh "az ad sp show --id 15245280-2fc1-46ce-a7a9-705fee5cffd7"
-
+                        sh "terraform apply -var='appId=${ARM_CLIENT_ID}' -var='password=${ARM_CLIENT_SECRET}' -auto-approve"
                     //}
                     //sh "terraform apply -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET' -auto-approve"
                 }
