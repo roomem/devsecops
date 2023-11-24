@@ -20,6 +20,7 @@ pipeline {
             steps {
                 script {
                     sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
+                    echo "${env.WORKSPACE}"
                 }
             }
         }
