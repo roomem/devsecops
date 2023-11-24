@@ -8,6 +8,12 @@ provider "azurerm" {
 resource "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "West Europe"
+
+  if not resource.azurerm_resource_group.default.exists {
+    create_resource = true
+  } else {
+    create_resource = false
+  }
 }
 
 
