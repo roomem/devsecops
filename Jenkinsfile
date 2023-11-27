@@ -28,7 +28,8 @@ pipeline {
         stage('Terraform Remove State') {
             steps {
                 dir('terraform'){
-                    sh "terraform state rm -all"
+                    sh "rm terraform.tfstate"
+                    sh "rm terraform.tfstate.backup"
                 }
             }
         }
