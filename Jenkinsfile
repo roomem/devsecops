@@ -25,7 +25,22 @@ pipeline {
             }
         }
 
-        
+        stage('Terraform Remove State') {
+            steps {
+                dir('terraform'){
+                    sh "terraform state rm -all"
+                }
+            }
+        }
+
+        stage('Terraform Import Existing Resources') {
+            steps {
+                dir('terraform'){
+                    sh "terraform import azurerm_resource_group.BU-MT '/subscriptions/${ARM_SUBSCRIPTION_ID}/resourceGroups/BU-MT'" 
+                    sh "terraform import azurerm_kubernetes_cluster.sweeping-leopard-cluster '/subscriptions/${ARM_SUBSCRIPTION_ID}/resourcegroups/BU-MT/providers/Microsoft.ContainerService/managedClusters/sweeping-leopard-aks'"
+                }
+            }
+        }
 
         stage('Terraform Init') {
             steps {
@@ -35,8 +50,6 @@ pipeline {
                 }
             }
         }
-
-        
 
 
         stage('Validazione configurazione') {
