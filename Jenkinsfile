@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('Terraform Remove State') {
             steps {
                 dir('terraform'){
@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-
+*/
         stage('Terraform Import Existing Resources') {
             steps {
                 dir('terraform'){
