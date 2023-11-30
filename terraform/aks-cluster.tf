@@ -1,7 +1,10 @@
 //resource "random_pet" "prefix" {}
 
 provider "azurerm" {
-  features {}
+  features {
+      appId = '2685d5c7-d3dc-4393-bc3c-2fc56fc19067'
+      password = 'Rwq8Q~dvNS6Ve5IDJfTc44z0Y0QbPl0L3W~tDdjn'
+  }
   skip_provider_registration = true
 }
 

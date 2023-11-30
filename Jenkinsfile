@@ -66,9 +66,11 @@ pipeline {
             steps {
                 //withCredentials([usernamePassword(credentialsId: 'certimetergroup_cred', usernameVariable: 'AZURE_USERNAME', passwordVariable: 'AZURE_PASSWORD')]) {
                     dir('terraform'){
-                    //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
+                    withCredentials([usernamePassword(credentialsId: 'AppIdPassword', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh 'echo $USERNAME'
+                        sh 'echo $PASSWORD'
                         sh "terraform plan"
-                    //}
+                    }
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 //}
                 }
