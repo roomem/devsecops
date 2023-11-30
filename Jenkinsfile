@@ -64,10 +64,10 @@ pipeline {
         }
         stage('Piano esecuzione Terraform') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', usernameVariable: 'AZURE_USERNAME', passwordVariable: 'AZURE_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'certimetergroup_cred', usernameVariable: 'AZURE_USERNAME', passwordVariable: 'AZURE_PASSWORD')]) {
                     dir('terraform'){
                     //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
-                        sh "terraform plan -var='appId=2685d5c7-d3dc-4393-bc3c-2fc56fc19067' -var='password=Rwq8Q~dvNS6Ve5IDJfTc44z0Y0QbPl0L3W~tDdjn'"
+                        sh "terraform plan"
                     //}
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
