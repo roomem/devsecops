@@ -66,8 +66,7 @@ pipeline {
             steps {
                 dir('terraform'){
                     //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
-                        sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
-                        sh "terraform plan -var='appId=${ARM_CLIENT_ID}' -var='password=${ARM_CLIENT_SECRET}'"
+                        sh "terraform plan -var='appId=2685d5c7-d3dc-4393-bc3c-2fc56fc19067' -var='password=Rwq8Q~dvNS6Ve5IDJfTc44z0Y0QbPl0L3W~tDdjn'"
                     //}
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
