@@ -93,7 +93,7 @@ pipeline {
         stage('Configurazione kubectl') {
             steps {
                 //sh 'aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)'
-                //sh 'az aks get-credentials --name sweeping-leopard-aks --resource-group BU-MT'
+                sh 'az aks get-credentials --name sweeping-leopard-aks --resource-group BU-MT'
             }
         }
         stage('Verifica cluster') {
