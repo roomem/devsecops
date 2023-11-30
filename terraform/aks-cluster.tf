@@ -5,10 +5,9 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "default" {
+data "azurerm_resource_group" "default" {
   name     = "BU-MT"
   location = "West Europe"
-
 }
 
 
@@ -35,14 +34,9 @@ resource "azurerm_kubernetes_cluster" "default" {
     ]
   }
 
-/*  service_principal {
-    client_id     = var.appId
-    client_secret = var.password
-  }
-*/
   role_based_access_control_enabled = true
 
   tags = {
-    environment = "Demo"
+    environment = "Romegioli"
   }
 }
