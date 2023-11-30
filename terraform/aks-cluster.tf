@@ -1,4 +1,4 @@
-resource "random_pet" "prefix" {}
+//resource "random_pet" "prefix" {}
 
 provider "azurerm" {
   skip_provider_registration = true
