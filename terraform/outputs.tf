@@ -4,9 +4,9 @@ output "resource_group_name" {
   value = data.azurerm_resource_group.default
 }
 
-output "kubernetes_cluster_name" {
-  value = azurerm_kubernetes_cluster.default.name
-}
+#output "kubernetes_cluster_name" {
+#  value = azurerm_kubernetes_cluster.default.name
+#}
 
 # output "host" {
 #   value = azurerm_kubernetes_cluster.default.kube_config.0.host
