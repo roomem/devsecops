@@ -10,7 +10,7 @@ data "azurerm_resource_group" "default" {
   //location = "West Europe"
 }
 
-
+/*
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "sweeping-leopard-aks"
   //location            = azurerm_resource_group.default.location
@@ -27,16 +27,18 @@ resource "azurerm_kubernetes_cluster" "default" {
     os_disk_size_gb = 30
   }
 
+
   identity {
   type = "UserAssigned"
     identity_ids = [
       "/subscriptions/f89882ab-4505-45fb-b088-f9c3f90f834e/resourceGroups/BU-MT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/romegioli",
     ]
   }
-
+  
   role_based_access_control_enabled = true
 
   tags = {
     environment = "Romegioli"
   }
 }
+*/
