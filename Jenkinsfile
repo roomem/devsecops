@@ -62,15 +62,15 @@ pipeline {
                 }
             }
         }
-        stage('Piano esecuzione Terraform') {
+        stage('Plan') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'certimetergroup_cred', usernameVariable: 'AZURE_USERNAME', passwordVariable: 'AZURE_PASSWORD')]) {
+                //withCredentials([usernamePassword(credentialsId: 'certimetergroup_cred', usernameVariable: 'AZURE_USERNAME', passwordVariable: 'AZURE_PASSWORD')]) {
                     dir('terraform'){
                     //withCredentials([azureServicePrincipal('marco-azure-cred')]) {
                         sh "terraform plan"
                     //}
                    // sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
-                }
+                //}
                 }
                 
             }
