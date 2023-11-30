@@ -7,7 +7,7 @@ provider "azurerm" {
 
 data "azurerm_resource_group" "default" {
   name     = "BU-MT"
-  location = "West Europe"
+  //location = "West Europe"
 }
 
 
