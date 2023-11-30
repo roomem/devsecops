@@ -1,7 +1,7 @@
 #   Contains outputs from the resources created in main.tf
 
 output "resource_group_name" {
-  value = azurerm_resource_group.default.name
+  value = data.azurerm_resource_group.default
 }
 
 output "kubernetes_cluster_name" {
