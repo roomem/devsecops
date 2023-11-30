@@ -21,7 +21,9 @@ pipeline {
                 script {
                     dir('terraform'){
                         sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
-                        sh "terraform init"
+                        withCredentials([string(credentialsId: 'AzureStorageAccessKey', variable: 'AZURE_ACCESS_KEY')]) {
+                            sh 'terraform init -upgrade -backend-config="access_key=${AZURE_ACCESS_KEY}"'
+                        }
                         sh "terraform validate"
                         sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                     }
