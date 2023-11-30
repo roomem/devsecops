@@ -20,8 +20,9 @@ pipeline {
             steps {
                 script {
                     sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
-                    echo "${env.WORKSPACE}"
-                    sh "az provider list --output table"
+                    sh "terraform init"
+                    sh "terraform validate"
+                    sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
                 }
             }
         }
