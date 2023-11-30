@@ -19,10 +19,12 @@ pipeline {
         stage('Azure Login') {
             steps {
                 script {
-                    sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
-                    sh "terraform init"
-                    sh "terraform validate"
-                    sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
+                    dir('terraform'){
+                        sh "az login --username ${AZURE_USERNAME} --password ${AZURE_PASSWORD}"
+                        sh "terraform init"
+                        sh "terraform validate"
+                        sh "terraform plan -var='appId=$ARM_CLIENT_ID' -var='password=$ARM_CLIENT_SECRET'"
+                    }
                 }
             }
         }
